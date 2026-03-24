@@ -1,0 +1,49 @@
+# FashionHub - .gitignore
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Uploads
+uploads/
+!uploads/.gitkeep
+
+# Dependencies
+node_modules/
+vendor/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Cache
+*.cache
+*.php~
+.cache/
+
+# Session files
+session/
+
+# Compiled files
+*.class
+*.o
