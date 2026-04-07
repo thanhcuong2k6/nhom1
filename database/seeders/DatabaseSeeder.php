@@ -39,10 +39,10 @@ class DatabaseSeeder extends Seeder
 
         // Create categories
         $categories = [
-            ['name' => 'Điện tử', 'slug' => 'dien-tu', 'description' => 'Các sản phẩm điện tử'],
-            ['name' => 'Quần áo', 'slug' => 'quan-ao', 'description' => 'Quần áo nam nữ'],
-            ['name' => 'Sách', 'slug' => 'sach', 'description' => 'Các cuốn sách hay'],
-            ['name' => 'Thực phẩm', 'slug' => 'thuc-pham', 'description' => 'Thực phẩm tươi ngon'],
+            ['name' => 'Quần', 'slug' => 'quan', 'description' => 'Quần nam nữ'],
+            ['name' => 'Áo', 'slug' => 'ao', 'description' => 'Áo nam nữ'],
+            ['name' => 'Phụ kiện', 'slug' => 'phu-kien', 'description' => 'Phụ kiện thời trang'],
+            ['name' => 'Giày dép', 'slug' => 'giay-dep', 'description' => 'Giày dép nam nữ'],
         ];
 
         foreach ($categories as $cat) {
@@ -51,12 +51,14 @@ class DatabaseSeeder extends Seeder
 
         // Create products
         $products_data = [
-            ['name' => 'Laptop Dell XPS 13', 'category' => 1, 'price' => 20000000, 'stock' => 10, 'featured' => true],
-            ['name' => 'iPhone 15 Pro', 'category' => 1, 'price' => 25000000, 'stock' => 15, 'featured' => true],
+            ['name' => 'Quần jeans nam cao cơi', 'category' => 1, 'price' => 450000, 'stock' => 30, 'featured' => true],
+            ['name' => 'Quần kaki nam', 'category' => 1, 'price' => 350000, 'stock' => 25, 'featured' => true],
             ['name' => 'Áo thun nam cao cấp', 'category' => 2, 'price' => 250000, 'stock' => 50, 'featured' => false],
-            ['name' => 'Quần jeans nam', 'category' => 2, 'price' => 400000, 'stock' => 40, 'featured' => false],
-            ['name' => 'Sách Làm Giàu Không Có Bí Mật', 'category' => 3, 'price' => 120000, 'stock' => 100, 'featured' => true],
-            ['name' => 'Lúa mạch nguyên hạt', 'category' => 4, 'price' => 50000, 'stock' => 200, 'featured' => false],
+            ['name' => 'Áo sơ mi nam chính hãng', 'category' => 2, 'price' => 500000, 'stock' => 40, 'featured' => false],
+            ['name' => 'Mắt kính thời trang', 'category' => 3, 'price' => 320000, 'stock' => 100, 'featured' => true],
+            ['name' => 'Đồng hồ nam quartz', 'category' => 3, 'price' => 800000, 'stock' => 20, 'featured' => false],
+            ['name' => 'Giày thể thao nam', 'category' => 4, 'price' => 650000, 'stock' => 35, 'featured' => true],
+            ['name' => 'Giày xỏ nữ đẹp', 'category' => 4, 'price' => 420000, 'stock' => 45, 'featured' => false],
         ];
 
         foreach ($products_data as $prod) {
