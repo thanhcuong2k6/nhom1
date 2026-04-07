@@ -60,7 +60,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Hình ảnh</label>
-                        <input type="file" class="form-control @error('images') is-invalid @enderror@error('images.*') is-invalid @enderror" name="images[]" id="images" multiple accept="image/*">
+                        <input type="file" class="form-control{{ $errors->has('images') || $errors->has('images.*') ? ' is-invalid' : '' }}" name="images[]" id="images" multiple accept="image/*">
                         @error('images') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
                         @error('images.*') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
                         <small class="form-text text-muted d-block mt-2">Chọn một hoặc nhiều ảnh (kích thước tối đa 2MB mỗi ảnh)</small>
