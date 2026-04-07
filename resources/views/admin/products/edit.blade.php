@@ -72,8 +72,11 @@
                                 </div>
                             @endif
                         </div>
-                        <input type="file" class="form-control" name="images[]" multiple accept="image/*">
-                        <small class="form-text text-muted">Chọn thêm hình ảnh mới (nếu cần)</small>
+                        <input type="file" class="form-control @error('images') is-invalid @enderror@error('images.*') is-invalid @enderror" name="images[]" id="images" multiple accept="image/*">
+                        @error('images') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                        @error('images.*') <span class="invalid-feedback d-block">{{ $message }}</span> @enderror
+                        <small class="form-text text-muted d-block mt-2">Chọn thêm hình ảnh mới hoặc bỏ trống nếu không muốn thay đổi (tối đa 2MB mỗi ảnh)</small>
+                        <div id="imagePreview" class="mt-3"></div>
                     </div>
 
                     <div class="mb-3">
@@ -91,4 +94,45 @@
         </div>
     </div>
 </div>
+
+<script>
+document.getElementById('images').addEventListener('change', function(e) {
+    const preview = document.getElementById('imagePreview');
+    preview.innerHTML = '';
+    
+    const files = e.target.files;
+    if (files.length === 0) return;
+    
+    preview.innerHTML = '<h6>Preview ảnh mới:</h6>';
+    const row = document.createElement('div');
+    row.className = 'row';
+    
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        
+        // Check file size (max 2MB)
+        if (file.size > 2 * 1024 * 1024) {
+            alert('File ' + file.name + ' vượt quá 2MB');
+            continue;
+        }
+        
+        // Check file type
+        if (!file.type.startsWith('image/')) {
+            alert('File ' + file.name + ' không phải là hình ảnh');
+            continue;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const col = document.createElement('div');
+            col.className = 'col-md-3 mb-3';
+            col.innerHTML = '<img src="' + event.target.result + '" class="img-fluid img-thumbnail" alt="Preview">';
+            row.appendChild(col);
+        };
+        reader.readAsDataURL(file);
+    }
+    
+    preview.appendChild(row);
+});
+</script>
 @endsection

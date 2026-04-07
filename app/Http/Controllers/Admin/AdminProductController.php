@@ -34,7 +34,11 @@ class AdminProductController extends Controller
             'stock' => 'required|integer|min:0',
             'is_featured' => 'boolean',
             'images' => 'nullable|array',
-            'images.*' => 'image|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ], [
+            'images.*.image' => 'Tệp phải là hình ảnh',
+            'images.*.mimes' => 'Định dạng hình ảnh không hỗ trợ. Vui lòng sử dụng: JPEG, PNG, JPG, GIF, WebP',
+            'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2MB',
         ]);
 
         $product = Product::create([
@@ -81,7 +85,11 @@ class AdminProductController extends Controller
             'stock' => 'required|integer|min:0',
             'is_featured' => 'boolean',
             'images' => 'nullable|array',
-            'images.*' => 'image|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ], [
+            'images.*.image' => 'Tệp phải là hình ảnh',
+            'images.*.mimes' => 'Định dạng hình ảnh không hỗ trợ. Vui lòng sử dụng: JPEG, PNG, JPG, GIF, WebP',
+            'images.*.max' => 'Kích thước hình ảnh không được vượt quá 2MB',
         ]);
 
         $product->update([
